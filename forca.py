@@ -1,10 +1,11 @@
 import random
 
-def jogar():
+def mensagem_inicial():
     print("*********************************")
     print("***Bem vindo ao jogo da Forca!***")
     print("*********************************")
 
+def criar_palavra_secreta():
     arquivo = open("jogos/palavras.txt", "r")
     palavras = []
 
@@ -14,8 +15,21 @@ def jogar():
     
     aleatoria = random.randrange(0, len(palavras))
     palavra_secreta = palavras[aleatoria].upper()
+    return palavra_secreta
 
+def define_letras_certas(palavra_secreta):
     letras_certas = ["_" for letra in palavra_secreta]
+
+def escreva_letra_letra():
+    chute = input("Qual é a letra?")
+        chute = chute.strip().upper()
+
+def jogar():
+
+    mensagem_inicial()
+    palavra_secreta = criar_palavra_secreta()
+
+    letras_certas = define_letras_certas(palavra_secreta)
 
     enforcou = False
     acertou = False
@@ -23,8 +37,7 @@ def jogar():
 
     while (not enforcou and not acertou):
         
-        chute = input("Qual é a letra?")
-        chute = chute.strip().upper()
+        chute = escreva_letra()
 
         if(chute in palavra_secreta):
             index = 0
@@ -48,3 +61,5 @@ def jogar():
 
 if(__name__ == "__main__"):
     jogar()
+
+    
